@@ -6,7 +6,6 @@
 #include <gazebo/transport/transport.hh>
 #include <gazebo/msgs/msgs.hh>
 #include <thread>
-#include <thread>
 #include "ros/ros.h"
 #include "ros/callback_queue.h"
 #include "ros/subscribe_options.h"
@@ -27,7 +26,6 @@ namespace gazebo
     /// \param[in] _sdf A pointer to the plugin's SDF element.
     public: virtual void Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
     {
-       double velocity = 0;
 
       // Safety check
       if (_model->GetJointCount() == 0)
@@ -53,34 +51,6 @@ namespace gazebo
       this->model->GetJointController()->SetVelocityPID(
           this->joint1->GetScopedName(), this->pid);
 
-      // Check that the velocity element exists, then read the value
-      if (_sdf->HasElement("velocity"))
-        velocity = _sdf->Get<double>("velocity");
-
-       this->SetVelocity(velocity);
-
-      // Set the joint's target velocity. This target velocity is just
-      // for demonstration purposes.
-      /*this->model->GetJointController()->SetVelocityTarget(
-          this->joint0->GetScopedName(), velocity);
-      this->model->GetJointController()->SetVelocityTarget(
-          this->joint1->GetScopedName(), velocity);*/
-
-      // Create the node
-  /*    this->node = transport::NodePtr(new transport::Node());
-      #if GAZEBO_MAJOR_VERSION < 8
-      this->node->Init(this->model->GetWorld()->GetName());
-      #else
-      this->node->Init(this->model->GetWorld()->Name());
-      #endif
-
-      // Create a topic name
-      std::string topicName = "~/" + this->model->GetName() + "/vel_cmd";
-
-      // Subscribe to the topic, and register a callback
-      this->sub = this->node->Subscribe(topicName,
-             &ControlPlugin::OnMsg, this);
-*/
       // Initialize ros, if it has not already bee initialized.
        if (!ros::isInitialized())
        {
@@ -120,14 +90,6 @@ namespace gazebo
           this->joint1->GetScopedName(), _vel);
     }
 
-    /// \brief Handle incoming message
-    /// \param[in] _msg Repurpose a vector3 message. This function will
-    /// only use the x component.
-  /*  private: void OnMsg(ConstVector3dPtr &_msg)
-    {
-      this->SetVelocity(_msg->x());
-    }
-*/
     /// \brief Handle an incoming message from ROS
     /// \param[in] _msg A float value that is used to set the velocity
     /// of the Velodyne.

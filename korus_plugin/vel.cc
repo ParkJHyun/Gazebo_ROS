@@ -24,7 +24,7 @@ int main(int _argc, char **_argv)
   gazebo::transport::NodePtr node(new gazebo::transport::Node());
   node->Init();
 
-  // Publish to the  velodyne topic
+  // Publish to the basemodel topic
   gazebo::transport::PublisherPtr pub =
     node->Advertise<gazebo::msgs::Vector3d>("~/my_basemodel/vel_cmd");
 
