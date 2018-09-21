@@ -17,7 +17,7 @@ korus의 base model만 사용하여 Gazebo 상에서 ROS로 구동하는 방법�
 
 ``` c
   $ cd ~/korus_plugin/build
-  $ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:~/velodyne_plugin/build
+  $ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:~/korus_plugin/build
   $ source /opt/ros/kinetic/setup.bash
   $ gazebo ../base.world
 ```
@@ -25,7 +25,7 @@ korus의 base model만 사용하여 Gazebo 상에서 ROS로 구동하는 방법�
 
 ``` c
   $ source /opt/ros/kinetic/setup.bash
-  $ rostopic pub /my_basemodel/vel_cmd std_msgs/Float32 1.5
+  $ rostopic pub /my_basemodel/cmd_vel std_msgs/Float32 1.5
 ```
 
 URDF 파일은 깃허브 내 Tutorial_ROSpy/urdf_base/korus_base.urdf 파일에서 확인할 수 있습니다.
