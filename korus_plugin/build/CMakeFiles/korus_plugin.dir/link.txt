@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC  -std=c++11  -shared -Wl,-soname,libkorus_plugin.so -o libkorus_plugin.so CMakeFiles/korus_plugin.dir/control_plugin.cc.o  -L/usr/lib/x86_64-linux-gnu/gazebo-7/plugins 

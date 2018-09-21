@@ -1,0 +1,3 @@
+2018.9.10
+gazebo에서 korus_base wheel joint에 힘을 주면 돌아가는 동작까지 수행함
+caster까지 달아서 최종적으로 부드럽게 움직이는 것을 목표
