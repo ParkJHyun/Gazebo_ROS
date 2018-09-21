@@ -2,6 +2,10 @@
 
 korus의 base model만 사용하여 Gazebo 상에서 ROS로 구동하는 방법입니다.
 
+[![Alt text for your video](https://user-images.githubusercontent.com/35755034/45861655-d1fd6480-bda8-11e8-8565-d405201e048f.jpg)](https://www.youtube.com/embed/7F-1URlKaKY)
+
+(위 이미지를 클릭하면 재생 영상을 확인할 수 있습니다.)
+
 1. 터미널 실행
 
 ``` c
