@@ -126,3 +126,37 @@ public: void SetVelocity(const double &_vel)
 
 
 이 함수를 통하여 ROS에서 속도 값을 지정하면 지정된 속도 값을 목표로 조인트가 회전할 것입니다.
+
+``` cpp
+private: void QueueThread()
+{
+  static const double timeout = 0.01;
+  while (this->rosNode->ok())
+  {
+    this->rosQueue.callAvailable(ros::WallDuration(timeout));
+  }
+}
+```
+
+QueueThread 함수는 메시지를 처리하기 위한 ROS helper 함수입니다.
+
+``` cpp
+private: physics::ModelPtr model;
+
+private: physics::JointPtr joint0, joint1;
+
+private: common::PID pid;
+
+private: transport::NodePtr node;
+
+private: transport::SubscriberPtr sub;
+
+private: std::unique_ptr<ros::NodeHandle> rosNode;
+
+private: ros::Subscriber rosSub;
+
+private: ros::CallbackQueue rosQueue;
+
+private: std::thread rosQueueThread;
+```
+위 변수들은 control_plugin.cpp 에서 사용되는 Load 함수에서 사용되는 멤버 변수를 initialize한 부분입니다.
